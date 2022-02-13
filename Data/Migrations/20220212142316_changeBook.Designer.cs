@@ -4,14 +4,16 @@ using LibApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LibApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220212142316_changeBook")]
+    partial class changeBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,12 +46,10 @@ namespace LibApp.Data.Migrations
                     b.Property<int>("NumberAvailable")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumberInStock")
-                        .IsRequired()
+                    b.Property<int>("NumberInStock")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ReleaseDate")
-                        .IsRequired()
+                    b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

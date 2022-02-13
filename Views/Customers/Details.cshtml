@@ -11,5 +11,12 @@
     @if (Model.Birthdate.HasValue)
     {
         <li>Birthdate: @Model.Birthdate.Value.ToShortDateString()</li>
-    }   
+    }
+
+    @if (User.IsInRole("StoreManager") || User.IsInRole("Owner"))
+    {
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
 </ul>
+
+

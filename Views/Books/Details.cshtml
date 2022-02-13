@@ -1,6 +1,6 @@
 ﻿@model LibApp.Models.Book
 
-@{ 
+@{
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,3 +13,8 @@
     <li>Date Added: @Model.DateAdded</li>
     <li>Numbers in Stock: @Model.NumberInStock</li>
 </ul>
+
+@if (User.IsInRole("StoreManager") || User.IsInRole("Owner"))
+{
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+}
